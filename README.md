@@ -1,7 +1,7 @@
 # Javascript freecodecamp
 
-This repo has been created to record what I'm learning from the javascript section of freecodecamp.
-I am creating this after having finished the first module and half of the second module.
+This repo has been created to record what I'm learning from the Javascript section of freecodecamp.
+I am creating this after having finished the first module and half of the second module. It mostly contains code snippets from freecodecamp that best helped me understand the concept and also some of their own explanations.
 
 ### ES6:Class syntax to define a constructor function
 

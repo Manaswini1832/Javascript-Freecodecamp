@@ -144,3 +144,125 @@ myPromise.catch(error => {
 ```
 
 Note: the then and catch methods can be chained to the promise declaration if you choose.
+
+## Regular expressions(Regex)
+
+### Using the Test Method
+
+Regular expressions are used to match parts of strings. The .test() method takes the regex, applies it to a string (which is placed inside the parentheses), and returns **_true_** or **_false_** if your pattern finds something or not.
+
+```
+let testStr = "freeCodeCamp";
+let testRegex = /Code/;
+testRegex.test(testStr);
+// Returns true
+
+```
+
+Note: The regex /Kevin/ will not match "kevin" or "KEVIN".
+
+### Searching for more than two regexes
+
+OR operator '|' is used for this.
+
+### Using the case insensitive flag (i) to take care of case differences(uppercase and lowercase)
+
+```
+let testRegex = /javascript/i;
+//This will search for javascript, Javascript, javaScript...
+```
+
+### Using the .match method to extract matches
+
+Returns the **_matching string_**. If there is no such string, it returns **_null_**.
+
+```
+"Hello, World!".match(/Hello/);
+// Returns ["Hello"]
+let ourStr = "Regular expressions";
+let ourRegex = /expressions/;
+ourStr.match(ourRegex);
+// Returns ["expressions"]
+
+```
+
+**DIFFERENCE BETWEEN .test() AND .match()**:
+.test method is applied to REGEX and the argument passed into it is the string that we are testing for, so that we get to know if there is a match..
+.match method is applied to a string with the argument being the regex so that the matching string is returned.
+
+### Usage of the global flag (g)
+
+To extract a pattern more than once, the g flag is used.
+
+```
+//Without the g flag
+let testStr = "Repeat, Repeat, Repeat";
+let ourRegex = /Repeat/;
+testStr.match(ourRegex);
+// Returns ["Repeat"]
+
+//With the g flag
+let repeatRegex = /Repeat/g;
+testStr.match(repeatRegex);
+// Returns ["Repeat", "Repeat", "Repeat"]
+```
+
+Note: We can use multiple flags
+
+```
+let regex = /search/gi
+```
+
+### Wildcard or dot or period character(.)
+
+The following example best illustrates the use of this character
+
+```
+let humStr = "I'll hum a song";
+let hugStr = "Bear hug";
+let huRegex = /hu./;
+huRegex.test(humStr); // Returns true
+huRegex.test(hugStr); // Returns true
+```
+
+### Character classes
+
+Character classes allow us to define a group of characters we wish to match by placing them inside square ([ and ]) brackets.
+
+```
+let bigStr = "big";
+let bagStr = "bag";
+let bugStr = "bug";
+let bogStr = "bog";
+let bgRegex = /b[aiu]g/;
+//Note that there are no commas separating the characters inside the character class
+bigStr.match(bgRegex); // Returns ["big"]
+bagStr.match(bgRegex); // Returns ["bag"]
+bugStr.match(bgRegex); // Returns ["bug"]
+bogStr.match(bgRegex); // Returns null
+```
+
+### Using the hyphen(-) character
+
+For a range of characters: Inside a character set, you can define a range of characters to match using a hyphen character.
+For example, to match lowercase letters a through e you would use [a-e].
+
+```
+let regex = /[a-e]/
+//Note that the square brackets are important since it is a character class
+```
+
+For a range of numbers: Using the hyphen (-) to match a range of characters is not limited to letters. It also works to match a range of numbers.
+
+```
+let regex = /[1-5]/
+```
+
+For a combination of a range of characters and numbers:
+
+```
+let jennyStr = "Jenny8675309";
+let myRegex = /[a-z0-9]/ig;
+// matches all letters and numbers in jennyStr
+jennyStr.match(myRegex);
+```

@@ -266,3 +266,142 @@ let myRegex = /[a-z0-9]/ig;
 // matches all letters and numbers in jennyStr
 jennyStr.match(myRegex);
 ```
+
+### Match Single Characters Not Specified
+
+We can also a character set with characters that we do not want to match. These are called
+**negated character sets**.
+The caret( ^ ) character is used to create a negated character set. We place ^ before all the set of characters that we don't want to match.
+
+Note : Characters like ., !, [, @, / and white space are also matched
+
+```
+//To create a negated character with all the vowels and digits, we do the following
+let regex = /[^aeiou^0-9]/gi;
+let string = "Manaswini 1832.";
+let result = string.match(regex);  //Returns ["M", "n", "s", "w", "n", " ", "."]
+```
+
+### Match characters that occur one or more times
+
+The + character is used here
+
+This is better understood with the following examples.
+
+```
+let regex = /a+/gi;
+
+//Case 1
+let str1 = "abc";
+let str2 = "aabc";
+let str3 = "abab";
+
+let result1 = str1.match(regex);  //Returns ["a"];
+let result2 = str2.match(regex);  //Returns ["aa"];
+let result3 = str3.match(regex);  //Returns ["a", "a"];
+```
+
+### Match characters that occur Zero or more times
+
+The character used here is \*
+
+```
+let soccerWord = "gooooooooal!";
+let gPhrase = "gut feeling";
+let oPhrase = "over the moon";
+let goRegex = /go*/;
+soccerWord.match(goRegex); // Returns ["goooooooo"]
+gPhrase.match(goRegex); // Returns ["g"]
+oPhrase.match(goRegex); // Returns null
+```
+
+```
+//To match A followed by any zero or more numbers of lowercase a, this would be the regex
+let regex = /[Aa*]/
+```
+
+### Find Characters with Lazy Matching
+
+Regular expressions are by default greedy i.e. they return the longest possible part of the
+string that matches the given regex.
+
+However, we can use the ? character to enable lazy matching.
+
+```
+let string = "Mississippi";
+
+//Greedy match(default for regular expressions)
+let greedyRegex = /m[a-z]*s/i;
+let greedyResult = string.match(greedyRegex); //Returns ["Mississ"]
+
+//Lazy matching using the ? character
+let lazyRegex = /m[a-z]*?s/i;
+let lazyResult = string.match(lazyRegex); //Returns ["Mis"]
+```
+
+### Match Beginning String Patterns only
+
+Inside a character set, ^ can be used to match a set of characters present **anywhere**
+in the string.
+But when used outside a character set, ^can help match that string only if it is present
+at the beginning of the string.
+
+```
+let string = "javascript";
+
+//^ used inside a character set
+let caretInRegex = /[^script]/;
+
+//^ used outside a character set
+let caretOutRegex = /^script/;
+
+console.log(caretInRegex.test(string));  //Logs true
+console.log(caretOutRegex.test(string)); //Logs false
+```
+
+### Match ending string patterns only
+
+The dollar sign( \$ ) at the end of the regex can be used to do this
+
+```
+let str1 = "cupboard";
+let str2 = "boardRoom";
+
+let endRegex = /board$/;
+
+console.log(endRegex.test(str1)); //Logs true
+console.log(endRegex.test(str2));  //Logs false
+```
+
+### Match all letters and numbers (alphanumerics)
+
+Here we look at the use of the /w character. It helps us write a **shorthand character class**
+
+Using the /w is equivalent to initializing the regex as /[A-Za-z0-9_]/
+Note: We have \_ included too
+
+```
+let longHand = /[A-Za-z0-9_]+/;
+let shortHand = /\w+/;
+let numbers = "42";
+let varNames = "important_var";
+console.log(longHand.test(numbers)); // Returns true
+console.log(shortHand.test(numbers)); // Returns true
+console.log(longHand.test(varNames)); // Returns true
+console.log(shortHand.test(varNames)); // Returns true
+```
+
+### Match characters other than alphanumerics
+
+We use the /W for this( note that this uses a capital letter(W) )
+
+Using /W is equivalent to using the regex /[^a-za-z0-9_]/
+
+```
+let quoteSample = "The five boxing wizards jump quickly.";
+let nonAlphabetRegex = /\W+/g;
+/*used global flag to extract the white space character 5 times*/
+let result = quoteSample.match(nonAlphabetRegex).length;
+
+console.log(result); //Logs 6
+```

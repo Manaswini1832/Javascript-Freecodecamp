@@ -320,6 +320,12 @@ oPhrase.match(goRegex); // Returns null
 let regex = /[Aa*]/
 ```
 
+**_NOTE_** : Differrence between + and \* characters
+
+- : To match one or more characters
+
+* : To match zero or more characters
+
 ### Find Characters with Lazy Matching
 
 Regular expressions are by default greedy i.e. they return the longest possible part of the
@@ -373,11 +379,13 @@ console.log(endRegex.test(str1)); //Logs true
 console.log(endRegex.test(str2));  //Logs false
 ```
 
+## Shorthand character classes
+
 ### Match all letters and numbers (alphanumerics)
 
-Here we look at the use of the /w character. It helps us write a **shorthand character class**
+Here we look at the use of the **\w** character. It helps us write a **shorthand character class**
 
-Using the /w is equivalent to initializing the regex as /[A-Za-z0-9_]/
+Using the \w is equivalent to initializing the regex as /[A-Za-z0-9_]/
 Note: We have \_ included too
 
 ```
@@ -391,11 +399,11 @@ console.log(longHand.test(varNames)); // Returns true
 console.log(shortHand.test(varNames)); // Returns true
 ```
 
-### Match characters other than alphanumerics
+### Match all characters other than alphanumerics
 
-We use the /W for this( note that this uses a capital letter(W) )
+We use the **\W** for this( note that this uses a capital letter(W) )
 
-Using /W is equivalent to using the regex /[^a-za-z0-9_]/
+Using \W is equivalent to using the regex /[^a-za-z0-9_]/
 
 ```
 let quoteSample = "The five boxing wizards jump quickly.";
@@ -404,4 +412,131 @@ let nonAlphabetRegex = /\W+/g;
 let result = quoteSample.match(nonAlphabetRegex).length;
 
 console.log(result); //Logs 6
+```
+
+### Match all numbers
+
+**\d** is used as a shorthand for the character class [0-9]
+
+### Match all the non-numbers
+
+**\D** is equivalent to the character class [^0-9]
+
+### Match whitespace
+
+**\s** is equivalent to the character class [ \r\t\f\n\v] (i.e. whitespace, carriage return, tab, form feed, and new line)
+
+### Match no white space
+
+**\S** is equivalent to using the character class [^ \r\t\f\n\v]
+
+### Specify Upper and Lower Number of Matches
+
+**Quantity specifiers** are used for this. They can be declared using {}
+
+```
+//To search for a minimum of 3 As and a maximum of 5As, we can use a quantity specifier as shown below
+let a4 = "AAAAh";
+let a2 = "AAh";
+
+let regex = /A{3,5}h/
+
+let res1 = regex.test(a4); // Returns true
+let res2 = regex.test(a2); // Returns false
+```
+
+### Specify Only the Lower Number of Matches
+
+We can only specify the lower limit and followed by a comma inside the quantity specifier
+
+```
+//To match only the string "hah" with the letter a appearing at least 3 times, our regex would be /ha{3,}h/.
+let A4 = "haaaah";
+let A2 = "haah";
+let A100 = "h" + "a".repeat(100) + "h";
+let multipleA = /ha{3,}h/;
+multipleA.test(A4); // Returns true
+multipleA.test(A2); // Returns false
+multipleA.test(A100); // Returns true
+```
+
+### Specify Exact Number of Matches
+
+We specify only one number between the curly brackets of the quantity specifier
+
+### Check for All or None
+
+? can be used after such an optional character
+
+```
+let britSpell = "colour";
+let amSpell = "color";
+
+let regex = /colou?r/;
+
+let res1 = regex.test(britSpell); //Returns true
+let res2 = regex.test(amSpell); //Returns true
+```
+
+### Lookaheads ( Positive and negative )
+
+Positive lookaheads ?= and negative lookaheads ?!=
+
+```
+//What we want: Look only for a number followed by $
+let yesDollar = "Bought a choco for 2Rs";
+let noDollar = "Bought a choco for 2";
+
+let regex = /\d+(?=Rs)/
+console.log(regex.test(yesDollar)); //Returns true
+console.log(regex.test(noDollar)); //Returns false
+```
+
+### Check For Mixed Grouping of Characters
+
+```
+//To check for both Penguin or Pumpkin
+let regex = /P(engu|umpk)in/;
+```
+
+### Reuse Patterns Using Capture Groups
+
+**Capture groups** help us search for patterns that occur repeatedly
+To specify where that repeat string will appear, you use a backslash (\) and then a number.
+Example: \1 => This number starts at 1 and increases with each additional capture group you use.
+
+```
+let repeatStr = "regex regex";
+let repeatRegex = /(\w+)\s\1/;
+repeatRegex.test(repeatStr); // Returns true
+repeatStr.match(repeatRegex); // Returns ["regex regex", "regex"]
+```
+
+### Use Capture Groups to Search and Replace
+
+We can search and replace a string using .replace()
+The first argument that it takes is the string to be replaced.
+The second argument is the string that it has to be replaced by.
+
+```
+let wrongText = "The sky is silver.";
+let silverRegex = /silver/;
+wrongText.replace(silverRegex, "blue");
+// Returns "The sky is blue."
+```
+
+Capture groups in the second argument can also be accessed using the dollar sign.
+
+```
+"Code Camp".replace(/(\w+)\s(\w+)/, '$2 $1');
+// Returns "Camp Code"
+```
+
+```
+//Another example using the dollar sign syntax
+let str = "one two three";
+let fixRegex = /(one)\s(two)\s(three)/; // Change this line
+let replaceText = "$3 $2 $1"; // Change this line
+let result = str.replace(fixRegex, replaceText);
+console.log(result) //Returns three two one
 ```

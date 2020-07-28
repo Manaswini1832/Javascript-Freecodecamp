@@ -1,0 +1,40 @@
+METHODS ON REGEXES AND TEST STRINGS
+.test() on Regex
+.match() on the test string
+.replace(string to replaced,string that has to be put) on the test string
+
+FLAGS ON REGEXES
+Global flag(search any number of times) : g
+Case insensitive flag(search for both upper and lower case) : i
+
+SEARCH FOR
+More than two regexes : | (OR operator)
+Search for any combination : .(Wildcard or dot or period character)
+Search for a group of characters with OR functionality between them: [] (Character class)
+Search for a range of characters : - (Hyphen character. Used in character classes)
+Create a negated character set : ^ inside character set
+Search for characters occuring one or more times : +
+Search for characters occuring zero or more times : * 
+Lazy matching : ?
+Check for all or one (British and American English example) : ? after character
+Positive lookahead : ?=Pattern
+Negative lookahead : ?!=Pattern
+Match beginning string patterns only : ^ outside character set
+Match ending string patterns only : $ at the end
+
+SHORTHAND CHARACTER CLASSES
+Alphanumerics and _ : \w equivalent to /[a-zA-Z0-9_]/
+Other than alphanumerics : \W equivalent to /[^a-zA-Z0-9]/
+All numbers : \d equivalent to /[0-9]/
+Other than numbers : \D equivalent to /[^0-9]/
+Whitespace : \s equivalent to /[ \r\t\f\n\v]/
+No whitespace : \S equivalent to /[^ \r\t\f\n]/
+
+QUANTITY SPECIFIERS
+Specify min and max number of matches : {min,max} after the character
+Specify only min number of matches : {min,} after the character
+Specify exact number of matches : {exactNumber} after the character
+
+CAPTURE GROUPS
+\ followed by a number
+Capture groups to search and replace : Use $ sign

@@ -7,6 +7,7 @@ Table of contents:
 
 1. [ES6](#es6)
 2. [Regex](#regex)
+3. [Debugging](#debugging)
 
 ## ES6
 
@@ -547,3 +548,41 @@ let replaceText = "$3 $2 $1"; // Change this line
 let result = str.replace(fixRegex, replaceText);
 console.log(result) //Returns three two one
 ```
+
+## Debugging
+
+### Use typeof to Check the Type of a Variable
+
+Immutable data types in JavaScript: Boolean, Null, Undefined, Number, String, Symbol
+Mutable data type: Object ( Arrays are technically types of objects )
+
+### Catch Misspelled Variable and Function Names
+
+Variable and function names in JavaScript are case sensitive
+
+### Catch Unclosed Parentheses, Brackets, Braces and Quotes
+
+One way to avoid this mistake is as soon as the opening character is typed, immediately include the closing match, then move the cursor back between them and continue coding.
+
+### Catch Mixed Usage of Single and Double Quotes
+
+You can escape the quotes inside the string by using the backslash (\) escape character
+
+### Catch Use of Assignment Operator Instead of Equality Operator
+
+= ( Assignment operator ) helps us assign a value to a variable
+== or === ( Equality operators ) help us check for equality
+
+Almost every value on its own in JavaScript evaluates to true, except what are known as the **Falsy** values: **false, 0, "" (an empty string), NaN, undefined, and null**.
+
+### Catch Missing Open and Closing Parenthesis After a Function Call
+
+When a function is being called, it is important that we use the () brackets after the function name.
+
+### Catch Off By One Errors When Using Indexing
+
+**Off by one errors (sometimes called OBOE)** crop up when you're trying to target a specific index of a string or array (to slice or access a segment), or when looping over the indices of them. JavaScript indexing starts at zero, not one, which means the last index is always one less than the length of the item.
+
+### Prevent Infinite Loops with a Valid Terminal Condition
+
+Don't forget to mention the terminal condition while inside a loop.

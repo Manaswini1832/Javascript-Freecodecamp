@@ -547,5 +547,3 @@ let replaceText = "$3 $2 $1"; // Change this line
 let result = str.replace(fixRegex, replaceText);
 console.log(result) //Returns three two one
 ```
-
-From now on, all the different modules will go into different folders

@@ -3,6 +3,11 @@
 This repo has been created to record what I'm learning from the Javascript section of freecodecamp.
 I am creating this after having finished the first module and half of the second module. It mostly contains code snippets from freecodecamp that best helped me understand the concept and also some of their own explanations.
 
+Table of contents:
+
+1. [ES6](### ES6:Class syntax to define a constructor function)
+2. [Regex](## Regular expressions(Regex))
+
 ### ES6:Class syntax to define a constructor function
 
 Class keyword declares a new function, to which a constructor is added. This constructor is invoked when new is called to create a new object. UpperCamelCase should be used by convention for ES6 class names
@@ -540,3 +545,5 @@ let replaceText = "$3 $2 $1"; // Change this line
 let result = str.replace(fixRegex, replaceText);
 console.log(result) //Returns three two one
 ```
+
+From now on, all the different modules will go into different folders

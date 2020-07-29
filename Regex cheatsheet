@@ -38,12 +38,3 @@ Specify exact number of matches : {exactNumber} after the character
 CAPTURE GROUPS
 \ followed by a number
 Capture groups to search and replace : Use $ sign
-
-SPECIAL (CHARACTERS REPEAT)
-+     One-or-more quatifier
-\     escape character
-[]    character set
-[^]   Negate symbol inside the character set
-?     Zero-or-one ( Makes the preceding char optional )
-.     Any character except the newline character
-*     Zero-or-more quantifier ( A little bit like + quantifier )

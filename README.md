@@ -6,7 +6,7 @@ I am creating this after having finished the first module and half of the second
 Table of contents:
 
 1. [ES6](#es6)
-2. [Regex](#regular-expressions(regex))
+2. [Regex](#regex)
 
 ## ES6
 
@@ -152,7 +152,7 @@ myPromise.catch(error => {
 
 Note: the then and catch methods can be chained to the promise declaration if you choose.
 
-## Regular expressions(Regex)
+## Regex
 
 ### Using the Test Method
 

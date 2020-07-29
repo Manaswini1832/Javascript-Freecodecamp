@@ -5,8 +5,8 @@ I am creating this after having finished the first module and half of the second
 
 Table of contents:
 
-1. [ES6](### ES6:Class syntax to define a constructor function)
-2. [Regex](## Regular expressions(Regex))
+1. [ES6](### ES6:Class-syntax-to-define-a-constructor-function)
+2. [Regex](## Regular-expressions(Regex))
 
 ### ES6:Class syntax to define a constructor function
 

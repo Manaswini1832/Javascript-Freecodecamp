@@ -8,6 +8,7 @@ Table of contents:
 1. [ES6](#es6)
 2. [Regex](#regex)
 3. [Debugging](#debugging)
+4. [Basic data structures](#basic-data-structures)
 
 ## ES6
 
@@ -586,3 +587,172 @@ When a function is being called, it is important that we use the () brackets aft
 ### Prevent Infinite Loops with a Valid Terminal Condition
 
 Don't forget to mention the terminal condition while inside a loop.
+
+## Basic data structures
+
+### Use an Array to Store a Collection of Data
+
+An array can take in a combination of JavaScript data types. Arrays have a length that can be accessed by the array.length property.
+
+### Access an Array's Contents Using Bracket Notation
+
+The fundamental feature of any data structure is, of course, the ability to not only store data, but to be able to retrieve that data on command. Each item in an array has an index. Arrays are zero-indexed i.e. their indices start from zero.
+
+### Add Items to an Array with push() and unshift()
+
+arr.push() ----> Add items to the end of an array
+arr.unshift() -->Add items to the beginning of an array
+
+### Remove Items from an Array with pop() and shift()
+
+arr.pop() ------> Remove items from the end of an array
+arr.shift() -----> Remove items from the beginning of an array
+
+### Remove Items in an array Using splice()
+
+First argument -----> The **index** where it should start removing elements from
+Second argument ----> The **number** of elements it should remove from that index
+Third argument -----> The **element(s)** that should be placed in that position
+
+```
+//Without third argument
+const arr = [1, 2, 3, 4, 5, 6];
+const splicedArr = arr.splice(1, 3);
+console.log(splicedArr); //Logs [1, 5, 6]
+
+//With the third argument
+const numbers = [10, 11, 12, 12, 15];
+
+numbers.splice(3, 1, 13, 14);
+// the second entry of 12 is removed, and we add 13 and 14 at the same index
+console.log(numbers);
+// returns [ 10, 11, 12, 13, 14, 15 ]
+```
+
+### Copy Array Items Using slice()
+
+First argument -----> Index at which the array should start forming
+Second argument -----> Index upto which ( excluding it ) till where this array formation should happen
+
+```
+let weatherConditions = ['rain', 'snow', 'sleet', 'hail', 'clear'];
+
+let todaysWeather = weatherConditions.slice(1, 3);
+// todaysWeather equals ['snow', 'sleet'];
+// weatherConditions still equals ['rain', 'snow', 'sleet', 'hail', 'clear']
+```
+
+### Copy an Array with the Spread Operator
+
+Provides a highly readable syntax to copy the contents of an array into another array.
+
+```
+let thisArray = [true, true, undefined, false, null];
+let thatArray = [...thisArray];
+// thatArray equals [true, true, undefined, false, null]
+// thisArray remains unchanged, and is identical to thatArray
+```
+
+### Combine Arrays with the Spread Operator
+
+```
+let thisArray = ['sage', 'rosemary', 'parsley', 'thyme'];
+
+let thatArray = ['basil', 'cilantro', ...thisArray, 'coriander'];
+// thatArray now equals ['basil', 'cilantro', 'sage', 'rosemary', 'parsley', 'thyme', 'coriander']
+```
+
+### Check For The Presence of an Element With indexOf()
+
+array. indexOf() takes an element as a parameter, and when called, it returns the position, or index, of that element, or -1 if the element does not exist on the array.
+
+### Add Key-Value Pairs to JavaScript Objects
+
+In an object, keys are mapped to properties called values.
+Following are the two ways to add a key-value pair to an object.
+
+```
+//First way: When our value doesn't have a space
+tekkenCharacter.origin = 'South Korea';
+
+//Second way: When our key has a space
+tekkenCharacter['hair color'] = 'dyed orange';
+```
+
+### Use the delete Keyword to Remove Object Properties
+
+This is done using the **delete** keyword
+
+```
+delete foods.apples;
+```
+
+### Check if an Object has a Property
+
+We can do so by using the **hasOwnProperty()** on the object or the **'in'** keyword.
+
+```
+users.hasOwnProperty('Alan');
+'Alan' in users;
+// both return true if 'Alan exists in the users object'
+```
+
+### Iterate Through the Keys of an Object with a for...in Statement
+
+```
+{
+  Alan: {
+    online: false
+  },
+  Jeff: {
+    online: true
+  },
+  Sarah: {
+    online: false
+  }
+}
+
+for (let user in users) {
+  console.log(user);
+}
+
+// logs:
+Alan
+Jeff
+Sarah
+```
+
+### Generate an Array of All Object Keys with Object.keys()
+
+Argument ------> Object whose keys have to be put in an array
+
+```
+let users = {
+  Alan: {
+    age: 27,
+    online: false
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: false
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function getArrayOfUsers(obj) {
+  // Only change code below this line
+  let newArr = Object.keys(obj);
+  return newArr;
+
+  // Only change code above this line
+}
+
+console.log(getArrayOfUsers(users)); //Logs ["Alan", "Jeff", "Sarah", "Ryan"]
+```

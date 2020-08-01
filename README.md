@@ -9,6 +9,7 @@ Table of contents:
 2. [Regex](#regex)
 3. [Debugging](#debugging)
 4. [Basic data structures](#basic-data-structures)
+5. [Basic algorithm scripting](#intro-to-basic-algorithm-scripting)
 
 ## ES6
 
@@ -756,3 +757,107 @@ function getArrayOfUsers(obj) {
 
 console.log(getArrayOfUsers(users)); //Logs ["Alan", "Jeff", "Sarah", "Ryan"]
 ```
+
+## Intro to basic algorithm scripting
+
+This section contains info about all the new things that I learnt while playing around with the algorithms
+
+### Reverse a String
+
+1. .slice() method on a string
+
+```
+const str = "Hello";
+
+console.log(str.slice(0, 1)); //Logs H
+console.log(str.slice(3, 5)); //Logs 1o
+console.log(str.slice(2)); //Logs llo
+```
+
+2. .reverse() on an array
+
+```
+const arr = [a, b, c];
+
+console.log(arr.reverse()); //Logs [c, b, a]
+```
+
+3. .join() on an array
+
+This method on a string helps join the items of an array using the symbol that we specify in the parentheses. If nothing is specified, the items are joined using a comma.
+
+```
+const elements = ['Fire', 'Air', 'Water'];
+
+console.log(elements.join());
+// expected output: "Fire,Air,Water"
+
+console.log(elements.join(''));
+// expected output: "FireAirWater"
+
+console.log(elements.join('-'));
+// expected output: "Fire-Air-Water"
+```
+
+### Find the longest word in a string
+
+1. .split() on a string
+
+This method helps split the string into an array as we wish
+
+```
+const str = "I am Human";
+
+console.log(str.split());  //Logs [ 'I am Human' ]
+console.log(str.split("")); //Logs [ 'I', ' ', 'a', 'm', ' ', 'H', 'u', 'm', 'a', 'n' ]
+console.log(str.split(" ")); //Logs [ 'I', 'am', 'Human' ]
+```
+
+2. Math.max()
+
+```
+console.log(Math.max(1, 5, 15, 10)); //Logs 15
+
+let arr = [3, 8, 9, 2];
+console.log(Math.max(...arr)); //Logs 9
+```
+
+### Check if a string ends with a given string
+
+1. The lastIndexOf() method returns the position of the last occurrence of a specified value in a string.
+
+```
+const str = "Manaswini";
+console.log(str.lastIndexOf("wini"));  /Logs 5
+```
+
+2. We can declare a new Regex using the new keyword followed by RegExp
+
+```
+//Example
+let re = new RegExp(target + "$", "i");
+```
+
+### Truncate a string
+
+1. .substring() method on a string
+
+```
+const str = "A-tisket a-tasket A green and yellow basket";
+console.log(str.substring(0, 8)); //Logs A-tisket
+```
+
+### Title Case a Sentence
+
+1. .charAt() followed by toUpperCase()
+
+```
+const str = "manasWiNi";
+console.log(str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()); //Logs Manaswini
+```
+
+### Falsy bouncer
+
+Falsy values in JavaScript are false, null, 0, "", undefined, and NaN
+
+Checking for falsy values can be done using an if statement

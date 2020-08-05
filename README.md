@@ -10,6 +10,7 @@ Table of contents:
 3. [Debugging](#debugging)
 4. [Basic data structures](#basic-data-structures)
 5. [Basic algorithm scripting](#intro-to-basic-algorithm-scripting)
+6. [Object oriented programming](#object-oriented-programming)
 
 ## ES6
 
@@ -861,3 +862,116 @@ console.log(str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()); //Logs Ma
 Falsy values in JavaScript are false, null, 0, "", undefined, and NaN
 
 Checking for falsy values can be done using an if statement
+
+## Object oriented programming
+
+### Create a Method on an Object
+
+```
+let duck = {
+  name: "Aflac",
+  numLegs: 2,
+  sayName: function() {return "The name of this duck is " + duck.name + ".";}
+};
+duck.sayName();
+// Returns "The name of this duck is Aflac."
+```
+
+### Make Code More Reusable with the this Keyword
+
+If the variable name changes, any code referencing the original name would need to be updated as well. In a short object definition, it isn't a problem, but if an object has many references to its properties there is a greater chance for error.
+
+```
+let duck = {
+ name: "Aflac",
+ numLegs: 2,
+ sayName: function() {return "The name of this duck is " + this.name + ".";}
+};
+//Here this refers to the object that the method is associated with.
+```
+
+### Define an object using a Constructor Function
+
+Constructors are functions that create new objects. They define properties and behaviors that will belong to the new object.
+
+```
+function Bird() {
+  this.name = "Albert";
+  this.color = "blue";
+  this.numLegs = 2;
+}
+```
+
+This constructor defines a Bird object with properties name, color, and numLegs set to Albert, blue, and 2, respectively. Constructors follow a few conventions:
+
+1. Constructors are defined with a capitalized name to distinguish them from other functions that are not constructors.
+2. Constructors use the keyword this to set properties of the object they will create. Inside the constructor, this refers to the new object it will create.
+3. Constructors define properties and behaviors instead of returning a value as other functions might.
+
+### Use a Constructor to Create Objects
+
+```
+function Bird() {
+  this.name = "Albert";
+  this.color  = "blue";
+  this.numLegs = 2;
+  // "this" inside the constructor always refers to the object being created
+}
+
+let blueBird = new Bird();
+
+blueBird.name; // => Albert
+blueBird.color; // => blue
+blueBird.numLegs; // => 2
+
+// Its properties can be accessed and modified:
+blueBird.name = 'Elvira';
+blueBird.name; // => Elvira
+```
+
+### Extend Constructors to Receive Arguments
+
+```
+function Bird(name, color) {
+  this.name = name;
+  this.color = color;
+  this.numLegs = 2;
+}
+```
+
+### Verify an Object's Constructor with instanceof
+
+Anytime a constructor function creates a new object, that object is said to be an instance of its constructor. instanceof allows you to compare an object to a constructor, returning true or false based on whether or not that object was created with the constructor.
+
+```
+let Bird = function(name, color) {
+  this.name = name;
+  this.color = color;
+  this.numLegs = 2;
+}
+
+let crow = new Bird("Alexis", "black");
+
+crow instanceof Bird; // => true
+```
+
+### Understand Own Properties
+
+```
+function Bird(name) {
+  this.name  = name;
+  this.numLegs = 2;
+}
+
+let duck = new Bird("Donald");
+
+let ownProps = [];
+
+for (let property in duck) {
+  if(duck.hasOwnProperty(property)) {
+    ownProps.push(property);
+  }
+}
+
+console.log(ownProps); // prints [ "name", "numLegs" ]
+```
